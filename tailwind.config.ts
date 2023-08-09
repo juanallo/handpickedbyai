@@ -17,6 +17,10 @@ const config: Config = {
       fontFamily: {
         'monoton': ['Monoton', 'monospace']
       },
+      colors: {
+        'secondary-bg': '#774C60',
+        'primary-color': '#EACDC2',
+      },
     },
   },
   plugins: [],

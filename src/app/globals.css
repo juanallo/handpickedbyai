@@ -16,5 +16,39 @@ html,
 body {
   background: black;
   height: 100%;
+  color: #EACDC2;
+}
+
+.subscribeInput {
+  width: fit-content;
+  align-self: center;
+  border-radius: 5px;
+  background: #A26D86;
   color: white;
+}
+
+.subscribeInput input{
+  background: transparent;
+  padding: 10px;
+}
+.subscribeInput input::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+.subscribeInput button {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 4px;
+  background-color: white;
+  color: black;
+}
+
+.subscribeInput button:hover {
+  background: #94667b;
+  color: white
+}
+
+.subscribeInput button:active {
+  background: #774C60;
+  color: white
 }

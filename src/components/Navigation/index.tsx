@@ -13,7 +13,7 @@ const Navigation = ({ pages = [] }: NavigationProps) => {
   return (
     <ul className="w-full">
       {pages.map((page) => {
-        return <li key={page.id} className="flex justify-between"><div>{page.date}</div> <div><ArrowIcon /></div></li>;
+        return <li key={page.id} className="flex justify-between text-primary-color text-sm"><div>{page.date}</div> <div><ArrowIcon /></div></li>;
       })}
     </ul>
   );

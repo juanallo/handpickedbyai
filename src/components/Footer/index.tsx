@@ -4,7 +4,7 @@ import TwitchLogo from "../icons/Twitch";
 
 const Footer = () => {
   return (
-    <div className="flex align-middle flex-col justify-center">
+    <div className="flex align-middle flex-col justify-center w-full gap-4 py-6">
       <div className="flex gap-3 mx-auto">
         <a href="#">
           <InstagramLogo />
@@ -16,7 +16,7 @@ const Footer = () => {
           <TwitterLogo />
         </a>
       </div>
-      <p>@2023 Handpicked by AI. All rights reserved</p>
+      <p className="text-center text-xs">@2023 Handpicked by AI. All rights reserved</p>
     </div>
   );
 };

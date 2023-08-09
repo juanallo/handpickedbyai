@@ -4,7 +4,7 @@ import TwitchLogo from "../icons/Twitch";
 
 const Follow = () => {
     return ( <div className="flex justify-between w-full"> 
-        <h3 className="font-monoton text-xl">Follow us</h3>
+        <h3 className="font-monoton text-xl text-primary-color">Follow us</h3>
         <div className="flex gap-3">
             <a href="#">
                 <InstagramLogo />
