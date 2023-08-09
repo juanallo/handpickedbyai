@@ -16,11 +16,13 @@ export default function Home() {
   return (
     <main className="h-full w-1200 min-h-min content-start flex flex-col gap-14 justify-start items-center bg-black align-content-center flex-wrap-nowrap border-radius-0 p-12">
       <Hero />
-      <Highlight />
-      <Follow />
-      <Subscribe />
-      <Navigation pages={pages} />
-      <Footer />
+      <div className="px-10 w-full gap-14 flex flex-col">
+        <Highlight />
+        <Follow />
+        <Subscribe />
+        <Navigation pages={pages} />
+        <Footer />
+      </div>
     </main>
   );
 }
