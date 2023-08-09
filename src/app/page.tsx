@@ -14,7 +14,7 @@ const pages: Array<Page> = [
 
 export default function Home() {
   return (
-    <main className="h-full w-1200 min-h-min content-start flex flex-col justify-start items-center bg-black overflow-hidden p-0 gap-0 align-content-center flex-wrap-nowrap border-radius-0;">
+    <main className="h-full w-1200 min-h-min content-start flex flex-col gap-14 justify-start items-center bg-black align-content-center flex-wrap-nowrap border-radius-0 p-12">
       <Hero />
       <Highlight />
       <Follow />
