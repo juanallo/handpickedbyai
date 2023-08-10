@@ -16,6 +16,14 @@ export const getStaticProps: GetStaticProps<{
   prev: string;
   next: string;
 }> = async ({ params }) => {
+  if (!params || !params.id) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
   const imageID = params.id;
   const images = JSON.parse(fs.readFileSync("images.json").toString());
   const imageIndex = images.findIndex((image: HighlightProps) => {
@@ -46,7 +54,7 @@ export async function getStaticPaths() {
 export default function Home({
   image,
   prev,
-  next
+  next,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <main className="h-full w-1200 min-h-min flex m-auto flex-col gap-14 justify-start items-center bg-black align-content-center flex-wrap-nowrap border-radius-0">
