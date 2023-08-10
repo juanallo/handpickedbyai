@@ -17,10 +17,11 @@ const Archive = ({ pages = [] }: ArchiveProps) => {
         return (
           <li key={page.id}>
             <Link
+              title={`Image posted ${page.date}`}
               href={`/archive/${page.id}`}
-              className="flex justify-between text-primary-color text-sm"
+              className="flex justify-between text-primary-color text-sm items-center py-2"
             >
-              <div>{page.date}</div>{" "}
+              <div>{page.date}</div>
               <div>
                 <RightArrowIcon />
               </div>

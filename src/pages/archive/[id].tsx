@@ -72,11 +72,11 @@ export default function Home({
 
       <div className="w-full gap-14 flex flex-col justify-center">
         <div className=" grid grid-cols-3 gap-4">
-          <Link href={`/archive/${prev}`} className="justify-self-end">
+          <Link href={`/archive/${prev}`} className="justify-self-end" title="Previous Image">
             <LeftArrowIcon />
           </Link>
           <h4 className="text-center">{image.date}</h4>
-          <Link href={`/archive/${next}`} className="justify-self-start">
+          <Link href={`/archive/${next}`} className="justify-self-start" title="Next Image">
             <RightArrowIcon />
           </Link>
           <div className="col-span-3">

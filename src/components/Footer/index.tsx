@@ -6,13 +6,13 @@ const Footer = () => {
   return (
     <div className="flex align-middle flex-col justify-center w-full gap-4 py-6">
       <div className="flex gap-3 mx-auto">
-        <a href="#">
+        <a href="#" title="Follow us on Instagram" aria-label="Follow us on Instagram">
           <InstagramLogo />
         </a>
-        <a href="#">
+        <a href="#" title="Follow us on Twitch" aria-label="Follow us on Twitch">
           <TwitchLogo />
         </a>
-        <a href="#">
+        <a href="#" title="Follow us on Twitter" aria-label="Follow us on Twitter">
           <TwitterLogo />
         </a>
       </div>
