@@ -3,23 +3,30 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Highlight, { HighlightProps } from "@/components/Highlight";
 import Subscribe from "@/components/Subscribe";
-import Navigation, { Page } from "@/components/Navigation";
+import Archive, { Page } from "@/components/Archive";
+import type { InferGetStaticPropsType, GetStaticProps } from "next";
+import fs from "fs";
+import { intlFormatDistance } from 'date-fns'
+import { formatDate } from "@/utils/date";
 
-const pages: Array<Page> = [
-  { id: "123", date: "Thursday, August 3, 2023" },
-  { id: "134", date: "Wednesday, August 2, 2023" },
-  { id: "134", date: "Tuesday, August 1, 2023" },
-  { id: "134", date: "Monday, July 31, 2023" },
-];
-
-const image: HighlightProps = {
-  image:
-    "https://cdn.midjourney.com/7fc3f1e5-b914-4990-a9c8-b00eeb0b51f7/0_0_384_N.webp",
-  caption:
-    "The Golden Gate Bridge is a suspension bridge spanning the Golden Gate, the one-mile-wide (1.6 km) strait connecting San Francisco Bay and the Pacific Ocean.",
+export const getStaticProps: GetStaticProps<{
+  highlight: HighlightProps;
+  pages: Array<Page>;
+}> = async () => {
+  const [highlight, ...images] = JSON.parse(
+    fs.readFileSync("images.json").toString()
+  );
+  const pages = images.map((image: Page) => {
+    const date = formatDate(image.date)
+    return { id: image.id, date };
+  });
+  return { props: { highlight, pages } };
 };
 
-export default function Home() {
+export default function Home({
+  highlight,
+  pages,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <main className="h-full w-1200 min-h-min flex m-auto flex-col gap-14 justify-start items-center bg-black align-content-center flex-wrap-nowrap border-radius-0">
       <div className="px-12 pt-12">
@@ -27,7 +34,7 @@ export default function Home() {
       </div>
 
       <div className="w-full gap-14 flex flex-col justify-center">
-        <Highlight {...image} />
+        <Highlight {...highlight} />
         <div className="px-16 w-full flex flex-col items-center">
           <div className="flex flex-col  max-w-4xl min-w-[50%]">
             <Follow />
@@ -37,7 +44,7 @@ export default function Home() {
         <Subscribe />
         <div className="w-full flex flex-col items-center">
           <div className="px-16 flex flex-col gap-14 max-w-4xl min-w-[50%]">
-            <Navigation pages={pages} />
+            <Archive pages={pages} />
             <Footer />
           </div>
         </div>

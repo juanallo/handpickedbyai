@@ -5,11 +5,11 @@ export interface Page {
   date: string;
 }
 
-export interface NavigationProps {
+export interface ArchiveProps {
   pages: Array<Page>;
 }
 
-const Navigation = ({ pages = [] }: NavigationProps) => {
+const Archive = ({ pages = [] }: ArchiveProps) => {
   return (
     <ul className="w-full">
       {pages.map((page) => {
@@ -19,4 +19,4 @@ const Navigation = ({ pages = [] }: NavigationProps) => {
   );
 };
 
-export default Navigation;
+export default Archive;
