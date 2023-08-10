@@ -7,18 +7,32 @@ import Archive, { Page } from "@/components/Archive";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import fs from "fs";
 import { formatDate } from "@/utils/date";
+import LeftArrowIcon from "@/components/icons/LeftArrow";
+import RightArrowIcon from "@/components/icons/RightArrow";
+import Link from "next/link";
 
 export const getStaticProps: GetStaticProps<{
   image: HighlightProps;
+  prev: string;
+  next: string;
 }> = async ({ params }) => {
   const imageID = params.id;
   const images = JSON.parse(fs.readFileSync("images.json").toString());
-  const image = images
-    .find((image: HighlightProps) => {
-      return image.id === imageID;
-    })
+  const imageIndex = images.findIndex((image: HighlightProps) => {
+    return image.id === imageID;
+  });
 
-  return { props: { image: { ...image, date: image.date && formatDate(image.date) } } };
+  const image = images[imageIndex];
+  const prevIndex = imageIndex - 1 < 0 ? images.length - 1 : imageIndex - 1;
+  const nextIndex = imageIndex + 1 >= images.length ? 0 : imageIndex + 1;
+
+  return {
+    props: {
+      image: { ...image, date: image.date && formatDate(image.date) },
+      prev: images[prevIndex].id,
+      next: images[nextIndex].id,
+    },
+  };
 };
 
 export async function getStaticPaths() {
@@ -31,6 +45,8 @@ export async function getStaticPaths() {
 
 export default function Home({
   image,
+  prev,
+  next
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <main className="h-full w-1200 min-h-min flex m-auto flex-col gap-14 justify-start items-center bg-black align-content-center flex-wrap-nowrap border-radius-0">
@@ -39,9 +55,17 @@ export default function Home({
       </div>
 
       <div className="w-full gap-14 flex flex-col justify-center">
-        <div>
+        <div className=" grid grid-cols-3">
+          <Link href={`/archive/${prev}`} className="justify-self-end">
+            <LeftArrowIcon />
+          </Link>
           <h4 className="text-center">{image.date}</h4>
-          <Highlight {...image} />
+          <Link href={`/archive/${next}`} className="justify-self-start">
+            <RightArrowIcon />
+          </Link>
+          <div className="col-span-3">
+            <Highlight {...image} />{" "}
+          </div>
         </div>
         <div className="px-16 w-full flex flex-col items-center">
           <div className="flex flex-col  max-w-4xl min-w-[50%]">

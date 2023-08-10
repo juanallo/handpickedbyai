@@ -1,4 +1,5 @@
-import ArrowIcon from "./Arrow";
+import Link from "next/link";
+import RightArrowIcon from "../icons/RightArrow";
 
 export interface Page {
   id: string;
@@ -13,7 +14,19 @@ const Archive = ({ pages = [] }: ArchiveProps) => {
   return (
     <ul className="w-full">
       {pages.map((page) => {
-        return <li key={page.id} className="flex justify-between text-primary-color text-sm"><div>{page.date}</div> <div><ArrowIcon /></div></li>;
+        return (
+          <li key={page.id}>
+            <Link
+              href={`/archive/${page.id}`}
+              className="flex justify-between text-primary-color text-sm"
+            >
+              <div>{page.date}</div>{" "}
+              <div>
+                <RightArrowIcon />
+              </div>
+            </Link>
+          </li>
+        );
       })}
     </ul>
   );
