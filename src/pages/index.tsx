@@ -6,8 +6,8 @@ import Subscribe from "@/components/Subscribe";
 import Archive, { Page } from "@/components/Archive";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import fs from "fs";
-import { intlFormatDistance } from 'date-fns'
 import { formatDate } from "@/utils/date";
+import Head from 'next/head'
 
 export const getStaticProps: GetStaticProps<{
   highlight: HighlightProps;
@@ -29,6 +29,13 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <main className="h-full w-1200 min-h-min flex m-auto flex-col gap-14 justify-start items-center bg-black align-content-center flex-wrap-nowrap border-radius-0">
+      <Head>
+        <title>AI Image of the day</title>
+        <meta name="og:title" content="AI Image of the day" />
+        <meta name="og:url" content={`https://juanallo.github.io/handpickedbyai/archive/${highlight.id}`} />
+        <meta name="og:description" content={highlight.caption} />
+        <meta name="og:image" content={highlight.image} />
+      </Head>
       <div className="px-12 pt-12">
         <Hero />
       </div>

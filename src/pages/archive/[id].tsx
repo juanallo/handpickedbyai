@@ -10,6 +10,7 @@ import { formatDate } from "@/utils/date";
 import LeftArrowIcon from "@/components/icons/LeftArrow";
 import RightArrowIcon from "@/components/icons/RightArrow";
 import Link from "next/link";
+import Head from 'next/head'
 
 export const getStaticProps: GetStaticProps<{
   image: HighlightProps;
@@ -58,6 +59,13 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <main className="h-full w-1200 min-h-min flex m-auto flex-col gap-14 justify-start items-center bg-black align-content-center flex-wrap-nowrap border-radius-0">
+      <Head>
+        <title>{`Archive | ${image.date}`}</title>
+        <meta name="og:title" content={`Archive | ${image.date}`} />
+        <meta name="og:url" content={`https://juanallo.github.io/handpickedbyai/archive/${image.id}`} />
+        <meta name="og:description" content={image.caption} />
+        <meta name="og:image" content={image.image} />
+      </Head>
       <div className="px-12 pt-12">
         <Hero />
       </div>
