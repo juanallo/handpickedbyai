@@ -26,16 +26,20 @@ export default function Home() {
         <Hero />
       </div>
 
-      <div className="w-full gap-14 flex flex-col ">
+      <div className="w-full gap-14 flex flex-col justify-center">
         <Highlight {...image} />
-        <div className="px-16">
-          <Follow />
+        <div className="px-16 w-full flex flex-col items-center">
+          <div className="flex flex-col  max-w-4xl min-w-[50%]">
+            <Follow />
+          </div>
         </div>
 
         <Subscribe />
-        <div className="px-16 flex flex-col gap-14">
-          <Navigation pages={pages} />
-          <Footer />
+        <div className="w-full flex flex-col items-center">
+          <div className="px-16 flex flex-col gap-14 max-w-4xl min-w-[50%]">
+            <Navigation pages={pages} />
+            <Footer />
+          </div>
         </div>
       </div>
     </main>
