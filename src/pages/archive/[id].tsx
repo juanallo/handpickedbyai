@@ -55,7 +55,7 @@ export default function Home({
       </div>
 
       <div className="w-full gap-14 flex flex-col justify-center">
-        <div className=" grid grid-cols-3">
+        <div className=" grid grid-cols-3 gap-4">
           <Link href={`/archive/${prev}`} className="justify-self-end">
             <LeftArrowIcon />
           </Link>
@@ -67,15 +67,15 @@ export default function Home({
             <Highlight {...image} />{" "}
           </div>
         </div>
-        <div className="px-16 w-full flex flex-col items-center">
-          <div className="flex flex-col  max-w-4xl min-w-[50%]">
+        {/* <div className="w-full flex flex-col items-center">
+          <div className="px-16 flex flex-col w-full max-w-3xl min-w-[50%]">
             <Follow />
           </div>
-        </div>
+        </div> */}
 
         <Subscribe />
         <div className="w-full flex flex-col items-center">
-          <div className="px-16 flex flex-col gap-14 max-w-4xl min-w-[50%]">
+          <div className="px-16 flex flex-col gap-14 w-full max-w-3xl min-w-[50%]">
             <Footer />
           </div>
         </div>

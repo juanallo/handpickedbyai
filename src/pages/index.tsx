@@ -35,15 +35,15 @@ export default function Home({
 
       <div className="w-full gap-14 flex flex-col justify-center">
         <Highlight {...highlight} />
-        <div className="px-16 w-full flex flex-col items-center">
-          <div className="flex flex-col  max-w-4xl min-w-[50%]">
+        <div className="w-full flex flex-col items-center">
+          <div className="px-16 flex flex-col w-full max-w-3xl min-w-[50%]">
             <Follow />
           </div>
         </div>
 
         <Subscribe />
         <div className="w-full flex flex-col items-center">
-          <div className="px-16 flex flex-col gap-14 max-w-4xl min-w-[50%]">
+          <div className="px-16 w-full flex flex-col gap-14 max-w-3xl min-w-[50%]">
             <Archive pages={pages} />
             <Footer />
           </div>
