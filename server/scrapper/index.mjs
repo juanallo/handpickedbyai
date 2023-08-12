@@ -19,10 +19,10 @@ async function scrapeAll(browserInstance) {
 }
 
 //Start the browser and create a browser instance
-export const scrape = () => {
+export const scrape = async () => {
   try {
     let browserInstance = startBrowser();
-    scrapeAll(browserInstance);
+    await scrapeAll(browserInstance);
   } catch (e) {
     console.log(e);
   }
