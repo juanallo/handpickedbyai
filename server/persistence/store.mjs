@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-export const save = (images, fileName, dir = `out`)  => {
+export const save = (images, fileName, dir)  => {
     //create dir if it doesn't exist
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir);
