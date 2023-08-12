@@ -16,3 +16,15 @@ export const save = (images, fileName, dir)  => {
     //write final images
     fs.writeFileSync(path, JSON.stringify(images))
 }
+
+export const replace = (images, fileName, dir)  => {
+    //create dir if it doesn't exist
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+
+    const path =`${dir}/${fileName}`
+
+    //write final images
+    fs.writeFileSync(path, JSON.stringify(images))
+}
