@@ -7,7 +7,7 @@ const scraperObject = {
     await page.goto(this.url);
     await page.setViewport({
       width: 1200,
-      height: 800,
+      height: 800, //TODO this could be improved to pick more images.
     });
 
     await page.waitForSelector(this.FEED_SELECTOR);
