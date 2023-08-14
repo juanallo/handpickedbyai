@@ -14,6 +14,8 @@ const execute = () => {
         fileContent++
 
         fs.writeFileSync(path, fileContent.toString())
+
+        console.log(`fileContent: ${fileContent}`)
 }
 
 execute()
