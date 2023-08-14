@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   # Build job
-  build:
+  pick:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -51,11 +51,5 @@ jobs:
           key: 'server-files'
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Install
-        uses: ianwalter/puppeteer@v2.0.0
-        with:
-          args: npm
-      - name: Run Daily Pick
-        uses: ianwalter/puppeteer@v2.0.0
-        with:
-          args: ${{ steps.detect-package-manager.outputs.runner }} run pick
+      - name: Daily Pick
+        run: ${{ steps.detect-package-manager.outputs.runner }} run pick
