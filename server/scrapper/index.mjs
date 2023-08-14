@@ -1,7 +1,8 @@
 import dalle2Scraper from "./dalle2Scraper.mjs";
+import nightcafeScraper from './nightcafeScraper.mjs'
 import { startBrowser } from "../puppeteer/browser.mjs";
 
-const scrapers = [dalle2Scraper];
+const scrapers = [dalle2Scraper, nightcafeScraper];
 
 async function scrapeAll(browserInstance) {
   const imageList = []
@@ -10,7 +11,7 @@ async function scrapeAll(browserInstance) {
     browser = await browserInstance;
     for (const scraper of scrapers) {
       const images = await scraper.execute(browser);
-      imageList.push(images)
+      imageList.push(...images)
     }
     browser.close();
   } catch (err) {
