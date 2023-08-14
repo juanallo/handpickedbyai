@@ -4,9 +4,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-env:
-  GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
-
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
@@ -54,6 +51,8 @@ jobs:
           git config user.email "<>"
 
       - name: commit
+        env: 
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
         run: |
           git add images.json
           git commit -m "new images of the day"
