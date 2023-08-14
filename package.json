@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "npx serve@latest out",
     "lint": "next lint",
-    "pick": "node server/test.mjs"
+    "pick": "node server/index.mjs"
   },
   "dependencies": {
     "@types/node": "20.4.9",
