@@ -43,25 +43,16 @@ jobs:
         with:
           node-version: "16"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Restore cache
-        uses: actions/cache@v3
+      - name: Download images from data
+        uses: actions/download-artifact@v3
         with:
-          path: |
-            .next/cache
-          # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
-      - name: Restore Images cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            server/out
-          key: server-files-${{ hashFiles('server/out/**') }}
-          restore-keys: |
-            server-files-${{ hashFiles('server/out/**') }}
+          name: images
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Daily Pick
         run: npm run pick
+      - name: upload images from data
+        uses: actions/upload-artifact@v3
+        with:
+          name: images
+          path: server/out/raw.test
