@@ -2,16 +2,18 @@
 import fs from 'fs'
 
 const execute = () => {
-        const dir = 'out'
+        const dir = 'server/out'
         //create dir if it doesn't exist
         if (!fs.existsSync(dir)){
             fs.mkdirSync(dir);
         }
+        const path = `${dir}/raw.test`
 
-        const fileContent = Number(fs.readFileSync(`${dir}/raw.test`).toString() ?? 0)
-        console.log(fileContent)
+        let fileContent = fs.existsSync(path) ? Number(fs.readFileSync(path).toString()) : 0
 
         fileContent++
 
-        fs.writeFileSync(`${dir}/raw.test`), fileContent.toString())
+        fs.writeFileSync(path, fileContent.toString())
 }
+
+execute()
