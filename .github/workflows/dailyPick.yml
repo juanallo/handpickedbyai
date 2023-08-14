@@ -47,3 +47,5 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Daily Pick
         run: npm run pick
+      - name: Print images JSON
+        run: cat images.json
