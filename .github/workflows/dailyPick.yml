@@ -52,4 +52,4 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Daily Pick
-        run: ${{ steps.detect-package-manager.outputs.runner }} run pick
+        run: npm run pick
