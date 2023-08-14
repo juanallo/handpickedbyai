@@ -36,6 +36,8 @@ const execute = async () => {
 
   const newFullImageList = fullImageList.filter(image => image.id !== pickedImage.id)
   replace(newFullImageList, RAW_FILE_NAME, STORE_DIRECTORY);
+
+  console.log(pickedImage)
 };
 
 try {
