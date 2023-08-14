@@ -49,3 +49,13 @@ jobs:
         run: npm run pick
       - name: Print images JSON
         run: cat images.json
+      - name: setup git config
+        run: |
+          git config user.name "Daily Picks Bot"
+          git config user.email "<>"
+
+      - name: commit
+        run: |
+          git add images.json
+          git commit -m "new images of the day"
+          git push origin main 
