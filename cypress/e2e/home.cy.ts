@@ -21,7 +21,7 @@ describe('Home Page', () => {
 
     const archiveImage = archive[0]
     const date = formatDate(archiveImage.date)
-    cy.findByText(date).click()
+    cy.findAllByText(date).first().click()
 
     cy.url()
       .should('be.equal', `http://localhost:3000/handpickedbyai/archive/${archiveImage.id}/`)
