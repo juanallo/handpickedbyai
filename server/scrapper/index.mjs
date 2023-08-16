@@ -1,8 +1,9 @@
 import dalle2Scraper from "./dalle2Scraper.mjs";
 import nightcafeScraper from './nightcafeScraper.mjs'
+import midjourneyScraper from './midjourney.mjs'
 import { startBrowser } from "../puppeteer/browser.mjs";
 
-const scrapers = [dalle2Scraper, nightcafeScraper];
+const scrapers = [dalle2Scraper, nightcafeScraper, midjourneyScraper];
 
 async function scrapeAll(browserInstance) {
   const imageList = []
@@ -23,7 +24,7 @@ async function scrapeAll(browserInstance) {
 //Start the browser and create a browser instance
 export const scrape = async () => {
   try {
-    let browserInstance = startBrowser();
+    let browserInstance = await startBrowser();
     return await scrapeAll(browserInstance);
   } catch (e) {
     console.log(e);
