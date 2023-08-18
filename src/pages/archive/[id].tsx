@@ -1,17 +1,15 @@
-import Follow from "@/components/Follow";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Highlight, { HighlightProps } from "@/components/Highlight";
 import Subscribe from "@/components/Subscribe";
-import Archive, { Page } from "@/components/Archive";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import fs from "fs";
 import { formatDate } from "@/utils/date";
 import LeftArrowIcon from "@/components/icons/LeftArrow";
 import RightArrowIcon from "@/components/icons/RightArrow";
 import Link from "next/link";
-import Head from 'next/head'
 import SEO from "@/components/SEO";
+import Fill from "@/components/Footer/Fill";
 
 export const getStaticProps: GetStaticProps<{
   image: HighlightProps;
@@ -67,11 +65,19 @@ export default function Home({
 
       <div className="w-full gap-14 flex flex-col justify-center">
         <div className=" grid grid-cols-3 gap-4">
-          <Link href={`/archive/${prev}`} className="justify-self-end" title="Previous Image">
+          <Link
+            href={`/archive/${prev}`}
+            className="justify-self-end"
+            title="Previous Image"
+          >
             <LeftArrowIcon />
           </Link>
           <h4 className="text-center">{image.date}</h4>
-          <Link href={`/archive/${next}`} className="justify-self-start" title="Next Image">
+          <Link
+            href={`/archive/${next}`}
+            className="justify-self-start"
+            title="Next Image"
+          >
             <RightArrowIcon />
           </Link>
           <div className="col-span-3">
@@ -91,6 +97,7 @@ export default function Home({
           </div>
         </div>
       </div>
+      <Fill />
     </main>
   );
 }

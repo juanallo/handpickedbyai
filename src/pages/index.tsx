@@ -8,6 +8,7 @@ import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import fs from "fs";
 import { formatDate } from "@/utils/date";
 import SEO from "@/components/SEO";
+import Fill from "@/components/Footer/Fill";
 
 export const getStaticProps: GetStaticProps<{
   highlight: HighlightProps;
@@ -50,6 +51,7 @@ export default function Home({
           </div>
         </div>
       </div>
+      <Fill />
     </main>
   );
 }
